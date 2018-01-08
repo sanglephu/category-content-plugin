@@ -31,7 +31,10 @@ env:
     - ECCUBE_VERSION=3.0.9 DB=mysql USER=root DBNAME=myapp_test DBPASS=' ' DBUSER=root
     #- ECCUBE_VERSION=3.0.9 DB=pgsql USER=postgres DBNAME=myapp_test DBPASS=password DBUSER=postgres
     # ec-cube 3.0.12
-    - ECCUBE_VERSION=3.0.12 DB=mysql USER=root DBNAME=myapp_test DBPASS=' ' DBUSER=root
+    - ECCUBE_VERSION=3.0.12 DB=mysql USER=r
+
+
+    oot DBNAME=myapp_test DBPASS=' ' DBUSER=root
     #- ECCUBE_VERSION=3.0.12 DB=pgsql USER=postgres DBNAME=myapp_test DBPASS=password DBUSER=postgres
 
     - ECCUBE_VERSION=3.0.10 DB=mysql USER=root DBNAME=myapp_test DBPASS=' ' DBUSER=root
@@ -93,7 +96,7 @@ before_script:
 
 script:
   # exec phpunit on ec-cube
-  - phpunit app/Plugin/${PLUGIN_CODE}/Tests
+  - ./vendor/bin/phpunit phpunit app/Plugin/${PLUGIN_CODE}/Tests
   - if [[ $TRAVIS_PHP_VERSION =~ ^[7.1] ]]; then ./vendor/bin/phpunit -c app/Plugin/${PLUGIN_CODE}/phpunit.xml.dist --coverage-clover=coverage.clover ; fi
 
 after_script:
