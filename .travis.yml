@@ -1,6 +1,6 @@
 language: php
 
-sudo: false
+sudo: required
 
 cache:
   directories:
@@ -93,7 +93,7 @@ before_script:
 
 script:
   # exec phpunit on ec-cube
-  - ./vendor/bin/phpunit phpunit app/Plugin/${PLUGIN_CODE}/Tests
+  - ./vendor/bin/phpunit app/Plugin/${PLUGIN_CODE}/Tests
   - if [[ $TRAVIS_PHP_VERSION =~ ^[7.1] ]]; then ./vendor/bin/phpunit -c app/Plugin/${PLUGIN_CODE}/phpunit.xml.dist --coverage-clover=coverage.clover ; fi
 
 after_script:
